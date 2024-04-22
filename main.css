@@ -1,0 +1,108 @@
+@font-face {
+    font-family: 'Rubik';
+    src: url("/fonts/Rubik-VariableFont_wght.ttf");
+    font-style: normal;
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: 'Merriweather';
+    src: url(/fonts/Merriweather-Regular.ttf);
+    font-style: normal;
+}
+
+@media (prefers-color-scheme: light) {
+    :root {
+        --bg-color: #f2f2f2;
+        --text-color: #3e274f;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg-color: #3e274f;
+        --text-color: #f2f2f2;
+    }
+}
+
+:root {
+    --divider-frequency: 30;
+    --divider-amplitude: 5;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Merriweather', serif;
+    text-align: center;
+}
+
+/* scales the portrait up and down slightly */
+@keyframes portrait-breathing {
+    0%, 100% {
+        transform: scale(.985);
+    }
+
+    50% {
+        transform: scale(1.025);
+    }
+}
+
+.portrait {
+    border-radius: 100%;
+    animation: portrait-breathing 2s ease-in-out infinite
+}
+
+#name {
+    margin-bottom: -25px;
+}
+
+#subname {
+    font-size: 12px;
+    margin-bottom: 0px;
+}
+
+#svg-divider {
+    fill: var(--text-color);
+}
+
+/* adds a more appealing box around hyperlinks */
+a {
+    color: var(--text-color);
+    background-color: rgba(128, 128, 128, 0.25);
+    padding: 3px;
+    border-radius: 5px;
+    text-decoration: none;
+    text-decoration-color: transparent;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 400ms, text-decoration-color 500ms;
+}
+
+a:hover {
+    background-color: rgba(200, 200, 200, 0.5);
+    text-decoration: underline;
+    text-decoration-color: var(--text-color);
+}
+
+body {
+    font-family: 'Rubik', sans-serif;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    font-size: 1.5rem;
+    line-height: 1.5;
+}
+
+section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+}
+
+footer {
+    text-align: center;
+    padding: .25em 0;
+    position: relative;
+    width: 100%;
+    font-size: 0.75em;
+}
