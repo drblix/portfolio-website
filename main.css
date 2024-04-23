@@ -13,26 +13,20 @@
 
 @media (prefers-color-scheme: light) {
     :root {
-        --bg-color: #f2f2f2;
-        --text-color: #3e274f;
+        --bg-color: #e7e7e7;
+        --text-color: #251531;
     }
 }
 
 @media (prefers-color-scheme: dark) {
     :root {
-        --bg-color: #3e274f;
+        --bg-color: #180d20;
         --text-color: #f2f2f2;
     }
 }
 
-:root {
-    --divider-frequency: 30;
-    --divider-amplitude: 5;
-}
-
 h1, h2, h3, h4, h5, h6 {
     font-family: 'Merriweather', serif;
-    text-align: center;
 }
 
 /* scales the portrait up and down slightly */
@@ -51,6 +45,44 @@ h1, h2, h3, h4, h5, h6 {
     animation: portrait-breathing 2s ease-in-out infinite
 }
 
+.projects-list {
+    list-style: none;
+    padding-left: 0px;
+}
+
+details summary {
+    cursor: pointer;
+}
+
+/* hides native list marker */
+details summary::marker {
+    font-size: 0;
+}
+
+details summary::before {
+    content: '➡️';
+    margin-right: 0.5rem;
+    display: inline-block;
+    transition: transform 150ms ease;
+}
+
+details[open] summary::before {
+    transform: rotate(90deg);
+}
+
+#projects {
+    max-width: 750px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: -40px;
+}
+
+#games {
+    align-items: flex-start;
+    text-align: left;
+    padding: 0px;
+}
+
 #name {
     margin-bottom: -25px;
 }
@@ -60,8 +92,19 @@ h1, h2, h3, h4, h5, h6 {
     margin-bottom: 0px;
 }
 
-#svg-divider {
-    fill: var(--text-color);
+#waving-hand {
+    display: inline-block;
+    animation: waving .75s ease-in-out infinite
+}
+
+@keyframes waving {
+    0%, 100% {
+        transform: rotate(-10deg);
+    }
+
+    50% {
+        transform: rotate(10deg);
+    }
 }
 
 /* adds a more appealing box around hyperlinks */
@@ -97,6 +140,7 @@ section {
     justify-content: center;
     align-items: center;
     padding: 2rem;
+    width: 100%;
 }
 
 footer {
