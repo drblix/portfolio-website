@@ -41,6 +41,10 @@
     margin-top: 0px;
 }
 
+.gallery-button {
+    cursor: pointer;
+}
+
 details summary {
     list-style: none;
     cursor: pointer;
@@ -108,4 +112,8 @@ a:hover {
     background-color: rgba(143, 143, 143, 0.65);
     text-decoration-color: var(--text-color);
     border-radius: 2.5px;
+}
+
+summary {
+    padding-bottom: 15px;
 }
