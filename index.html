@@ -5,20 +5,21 @@
         <meta name="author" content="Benjamin Neuenschwander">
         <meta title="Benjamin N.">
         <meta name="description" content="Game developer, musician, artist">
-        <title>Benjamin Neuenschwander: Developer, musician, artist</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="main.css">
         <link rel="icon" type="image/x-icon" href="images/portait.ico">
-        <meta name="viewport" content="width=device-width, initial-scale">
+        <title>Benjamin Neuenschwander: Developer, musician, artist</title>
+        <script type="text/javascript" src="main.js"></script>
     </head>
 
-    <body>
+    <body id="main-body">
         <section id="main">
             <img class="portrait" src="images/portrait.webp" height="220px" width="190px" alt="Portrait of Benjamin">
-            <h1 id="name">
+            <h1 style="text-align: center;">
                 <span id="waving-hand">👋</span>
                 Hi! My name is Ben!
             </h1>
-            <h6 id="subname">(that's short for <u>B</u>enjamin <u>E</u>vans <u>N</u>euenschwander)</h6>
+            <h6 style="text-align: center; margin-top: -20px;">(that's short for <u>B</u>enjamin <u>E</u>vans <u>N</u>euenschwander)</h6>
             <div id="description">
                 <p>I am a:</p>
                 <ul style="margin-top: 0px; margin-bottom: 0px;">
@@ -31,39 +32,27 @@
                 </ul>
                 <p>
                     You can contact me via email
+                    <a href="mailto:benjamineneuenschwander@gmail.com" target="_blank" rel="noopener noreferrer">🔗here</a>,
                     <br>
-                    <a href="mailto:benjamineneuenschwander@gmail.com" target="_blank" rel="noopener noreferrer">benjamineneuenschwander@gmail.com</a>,
+                    Or find me on GitHub <a href="https://github.com/drblix" target="_blank" rel="noopener noreferrer">🔗here</a>,
                     <br>
-                    Or find me on GitHub <a href="https://github.com/drblix" target="_blank" rel="noopener noreferrer">here</a>,
+                    Or find me on LinkedIn <a href="https://www.linkedin.com/in/benjamin-neuenschwander-6b20182b4/" target="_blank" rel="noopener noreferrer">🔗here</a>
                     <br>
                     Or on add me on Discord at: <a>drblix</a>
                 </p>
             </div>
-            
-            <!--SVG graphics to form a wave :]-->
-            <svg viewBox="0 0 1300 100" style="width: 774px;">
-                <path d="M0,60 
-                         Q162.5,0 325,60 
-                         Q487.5,120 650,60
-                         Q812.5,0 975,60 
-                         Q1137.5,120 1300,60" 
-                         fill="none"
-                         stroke="var(--text-color)"
-                         stroke-width="6"
-                         stroke-linecap:="round"/>
-            </svg>
         </section>
 
         <section id="projects">
             <div id="heading">
                 <h2 style="text-align: center;">My Projects</h2>
-                <p style="margin-top: -18px; text-align: center;">Below are some of my projects I've created over the years.<br>Some of them have download links so you can test them out yourself!</p>
+                <p style="margin-top: -18px; text-align: center;">Below are some of my projects I've created over the years. Some of them have download links so you can test them out yourself!</p>
             </div>
 
             <section id="games">
                 <h3>🎮 Games</h3>
                 <ul class="projects-list">
-                    <li id="Galatigoo">
+                    <li id="Galatigoo" class="project-element">
                         <details>
                             <summary>Galatigoo</summary>
                             <p>

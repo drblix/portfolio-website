@@ -25,128 +25,87 @@
     }
 }
 
-h1, h2, h3, h4, h5, h6 {
-    font-family: 'Merriweather', serif;
-}
-
-/* scales the portrait up and down slightly */
-@keyframes portrait-breathing {
-    0%, 100% {
-        transform: scale(.985);
-    }
-
-    50% {
-        transform: scale(1.025);
-    }
+.loaded {
+    opacity: 1;
 }
 
 .portrait {
-    border-radius: 100%;
-    animation: portrait-breathing 2s ease-in-out infinite
+    border-radius: 80px;
+    max-width: 190px;
+    margin-top: 1.25rem;
 }
 
 .projects-list {
     list-style: none;
-    padding-left: 0px;
+    padding-left: 20px;
+    margin-top: 0px;
 }
 
 details summary {
+    list-style: none;
     cursor: pointer;
-}
-
-/* hides native list marker */
-details summary::marker {
-    font-size: 0;
 }
 
 details summary::before {
     content: '➡️';
-    margin-right: 0.5rem;
     display: inline-block;
-    transition: transform 150ms ease;
+    margin-right: .5rem;
+    transition: transform 0.3s ease;
 }
 
 details[open] summary::before {
     transform: rotate(90deg);
 }
 
-#projects {
-    max-width: 750px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: -40px;
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Merriweather', serif;
 }
 
-#games {
-    align-items: flex-start;
-    text-align: left;
-    padding: 0px;
-}
-
-#name {
-    margin-bottom: -25px;
-}
-
-#subname {
-    font-size: 12px;
-    margin-bottom: 0px;
-}
-
-#waving-hand {
-    display: inline-block;
-    animation: waving .75s ease-in-out infinite
-}
-
-@keyframes waving {
-    0%, 100% {
-        transform: rotate(-10deg);
-    }
-
-    50% {
-        transform: rotate(10deg);
-    }
-}
-
-/* adds a more appealing box around hyperlinks */
-a {
-    color: var(--text-color);
-    background-color: rgba(128, 128, 128, 0.25);
-    padding: 3px;
-    border-radius: 5px;
-    text-decoration: none;
-    text-decoration-color: transparent;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 400ms, text-decoration-color 500ms;
-}
-
-a:hover {
-    background-color: rgba(200, 200, 200, 0.5);
-    text-decoration: underline;
-    text-decoration-color: var(--text-color);
-}
-
-body {
-    font-family: 'Rubik', sans-serif;
-    color: var(--text-color);
-    background-color: var(--bg-color);
-    font-size: 1.5rem;
-    line-height: 1.5;
-}
-
-section {
+section, footer {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 2rem;
-    width: 100%;
+    padding: 0 1rem;
 }
 
 footer {
-    text-align: center;
-    padding: .25em 0;
-    position: relative;
+    font-size: 0.75rem;
+}
+
+section > * {
     width: 100%;
-    font-size: 0.75em;
+    max-width: calc(500px + .5rem);
+}
+
+body {
+    opacity: 0;
+    font-family: 'Rubik', sans-serif;
+    font-size: 1.35rem;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.4;
+
+    transition: opacity ease 800ms;
+}
+
+p {
+    margin: 0.5rem 0;
+}
+
+a {
+    color: var(--text-color);
+    background-color: rgba(180, 180, 180, 0.45);
+    border-radius: 8px;
+    padding: 2px;
+    text-decoration-color: transparent;
+    color: var(--text-color);
+    transition: all ease 100ms;
+}
+
+a:hover {
+    background-color: rgba(143, 143, 143, 0.65);
+    text-decoration-color: var(--text-color);
+    border-radius: 2.5px;
 }
