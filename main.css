@@ -25,6 +25,43 @@
     }
 }
 
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes downloadBounce {
+
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    33% {
+        transform: translateY(-5px);
+    }
+
+    66% {
+        transform: translateY(5px);
+    }
+}
+
+#download-arrow {
+    display: inline-block;
+    transition: transform 0.3s;
+}
+
+.project-download:hover #download-arrow {
+    animation: downloadBounce 0.6s ease;
+}
+
+details .fade-in {
+    animation: fadeIn 750ms ease-out;
+}
+
 .loaded {
     opacity: 1;
 }
@@ -41,8 +78,29 @@
     margin-top: 0px;
 }
 
+.project-desc {
+    font-size: 1.05rem;
+    text-align: left;
+    line-height: 1.5;
+}
+
+.project-download {
+    cursor: pointer;
+    padding: 5px;
+    text-decoration: transparent;
+}
+
+.project-download:hover {
+    font-size: 1.75rem;
+    font-weight: bold;
+}
+
 .gallery-button {
     cursor: pointer;
+}
+
+li.project-element {
+    padding: 8px 0;
 }
 
 details summary {
@@ -60,7 +118,6 @@ details summary::before {
 details[open] summary::before {
     transform: rotate(90deg);
 }
-
 
 h1, h2, h3, h4, h5, h6 {
     font-family: 'Merriweather', serif;

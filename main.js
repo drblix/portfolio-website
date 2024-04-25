@@ -2,13 +2,43 @@ const GALATIGOO = 'galatigoo';
 const GALATIGOO_MEDIA = 3;
 
 const FNAJ = 'fnaj';
-const FNAJ_MEDIA = 2;
+const FNAJ_MEDIA = 3;
 
 let galatigooIndex = 1;
 let fnajIndex = 1;
 
 window.addEventListener('load', function(event) {
     this.document.querySelector("body").className = "loaded";
+});
+
+/**
+ * Links all child elements of detail elements to perform a "fade-in" animation when revealed
+ */
+document.addEventListener('DOMContentLoaded', function() {
+    const detailsElements = document.querySelectorAll('details');
+
+    detailsElements.forEach(function(details) {
+        details.addEventListener('toggle', function() {
+            for (let i = 0; i < details.children.length; i++) {
+                const content = details.children[i];
+
+                // summary button area should not be animated
+                if (content.nodeName.toLowerCase() === "summary") {
+                    continue;
+                }
+
+                if (details.open) {
+                    // remove the class first to reset animation
+                    content.classList.remove('fade-in');
+                    // add the class to start the animation
+                    content.classList.add('fade-in');
+                } else {
+                    // handle the hiding animation
+                    content.classList.remove('fade-in');
+                }
+            }
+        });
+    });
 });
 
 /**

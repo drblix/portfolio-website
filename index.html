@@ -9,7 +9,7 @@
         <link rel="stylesheet" href="main.css">
         <link rel="icon" type="image/x-icon" href="images/portait.ico">
         <title>Benjamin Neuenschwander: Developer, musician, artist</title>
-        <script type="text/javascript" src="main.js"></script>
+        <script type="text/javascript" src="main.min.js"></script>
     </head>
 
     <body id="main-body">
@@ -52,20 +52,149 @@
             <section id="games">
                 <h3>🎮 Games</h3>
                 <ul class="projects-list">
-                    <li id="Galatigoo" class="project-element">
+                    <li id="galatigoo" class="project-element">
                         <details>
                             <summary>Galatigoo</summary>
 
                             <a class="gallery-button" onclick="galleryButtonPressed(this.parentElement.children[2], 'galatigoo', -1)">⬅️</a>
-                            <img src="images/portrait.webp" width="350" height="265">
+                            <img src="images/galatigoo_1.jpg" width="350" height="265">
                             <a class="gallery-button" onclick="galleryButtonPressed(this.parentElement.children[2], 'galatigoo', 1)">➡️</a>
-                            <p>
-                                the best website
+                            <p class="project-desc">
+                                A 2D top-down tower defense game where you battle an enemy that can only be delayed, not defeated.
+                                Features a unique resource management system and endless gameplay strategies.
+                                I'm currently rewriting this game in my own game engine, stay tuned!
                             </p>
+                        </details>
+                    </li>
+
+                    <li id="FNAJ" class="project-element">
+                        <details>
+                            <summary>Five Nights at Jacobsons</summary>
+
+                            <a class="gallery-button" onclick="galleryButtonPressed(this.parentElement.children[2], 'FNAJ', -1)">⬅️</a>
+                            <img src="images/fnaj_1.jpg" width="350" height="265">
+                            <a class="gallery-button" onclick="galleryButtonPressed(this.parentElement.children[2], 'FNAJ', 1)">➡️</a>
+                            <p class="project-desc">
+                                My junior-year capstone project that I worked on with one other person who assisted with art.
+                                A satirical game which transforms teachers from my school into killer animatronics akin to those in the popular game "Five Nights at Freddy's".
+                                I can proudly say this game was present on every student's computer monitor until the end of the year (can't say the teachers were as happy).
+                            </p>
+                            <a class="project-download" target="_blank" href="https://drive.google.com/uc?export=download&id=1_pZvmo6pWqBe9m1zIGC-OM6Ul8TRkTba" download><span id="download-arrow">⬇️</span> Download</a>
+                        </details>
+                    </li>
+
+                    <li id="connect-4" class="project-element">
+                        <details>
+                            <summary>Connect-4 (Rust)</summary>
+
+                            <img src="images/connect4_1.jpg" width="500" height="265">
+                            <p class="project-desc">
+                                A very small terminal-based game I created to experiment with the programming language Rust.
+                                Features an AI opponent with customizable difficulty and a local PvP mode where you can play against another person.
+                            </p>
+                            <a class="project-download" target="_blank" href="https://drive.google.com/uc?export=download&id=1yx9qp6WDeEufyULia1uG0QZb2jwiAGgg" download>⬇️ Download</a>
+                        </details>
+                    </li>
+
+                    <li id="tic-tac-toe" class="project-element">
+                        <details>
+                            <summary>Tic-Tac-Toe (C++)</summary>
+
+                            <img src="images/tictactoe_1.jpg" width="500" height="265">
+                            <p class="project-desc">
+                                Another small terminal based game I created to experiment with minimax algorithms for video game AI; also just an excuse for me to dabble in C++ for a little bit.
+                                Only features playing against an AI opponent! Can you beat the impossible difficulty? (I think not)
+                            </p>
+                            <a class="project-download" target="_blank" href="https://drive.google.com/uc?export=download&id=1Axj-MCFNb8RtguX1nyUGBF2_cWNHIxTt" download>⬇️ Download</a>
                         </details>
                     </li>
                 </ul>
             </section>
+        </section>
+
+        <section id="web-development">
+            <h3>🌐 Web Development</h3>
+            <ul class="projects-list">
+                <li id="this-website" class="project-element">
+                    <details>
+                        <summary>This Website!</summary>
+                        <p class="project-desc">
+                            That's right! This website I've created by myself to further my HTML, CSS, and JavaScript skills to learn more about the basics of front-end web development (oh, and also to create a portfolio, you know).
+                            Thanks to GitHub Pages for hosting this domain.
+                            Never not a time to learn more things :]
+                        </p>
+                    </details>
+                </li>
+            </ul>
+        </section>
+        
+        <section id="music-creation">
+            <h3>🎵 Music</h3>
+            <ul class="projects-list">
+                <li id="game-jam-music" class="project-element">
+                    <details>
+                        <summary>Funky Game Jam Music</summary>
+                        <p class="song-title">Super Funky Menu</p>
+                        <audio controls src="songs/SuperFunkyMenu.wav"></audio>
+                        <p class="song-title">Super Funky Track</p>
+                        <audio controls src="songs/SuperFunkyTrack.wav"></audio>
+                        <p class="project-desc">
+                            These are two retro-pixel-style songs, ten seconds each, that I created for a Game Jam hosted in our school district.
+                            The game I created placed second place by only a few points, but, I still had fun making it! :]
+                        </p>
+                    </details>
+                </li>
+                <li id="fnaj-music" class="project-element">
+                    <details>
+                        <summary>Five Nights at Jacobsons</summary>
+                        <p class="song-title">First Menu Theme</p>
+                        <audio controls src="songs/FNAJTheme_1.ogg"></audio>
+                        <p class="song-title">Second Menu Theme</p>
+                        <audio controls src="songs/FNAJTheme_2.ogg"></audio>
+                        <p class="project-desc">
+                            So, interesting story for these two menu tracks that I made for Five Nights at Jacobson (FNAJ).
+                            The first menu theme was created with an interesting synth I made by complete accident in FL Studio, but hey, it sounded cool!<br><br>
+                            The second menu theme was a complete overhaul of the first theme, since I thought the game got scarier as we went further into the development process, but everyone seemed to love the first theme more than the second! Though, I guess the second is less of a theme and more so ambiance?
+                            Maybe less actually is more? 🤔<br><br>
+                            Fun fact: some of the high-pitched chimes in the second theme is a heavily distorted recording of me hitting a nail with a hammer in my garage.
+                        </p>
+                    </details>
+                </li>
+                <li id="scrapped-balloon" class="project-element">
+                    <details>
+                        <summary>Scrapped Balloon Game</summary>
+                        <p class="song-title">Through the Wind</p>
+                        <audio controls src="songs/ThroughTheWind.ogg"></audio>
+                        <p class="project-desc">
+                            A very calming (or at least it tries to be) classical piece that was intended to be used for a game project where you free roam the world in a massive hot air balloon.
+                            Unfortunately, the project as of now has been scrapped since I lost interest, but I might return to it some day!
+                        </p>
+                    </details>
+                </li>
+                <li id="untitled-electronic" class="project-element">
+                    <details>
+                        <summary>Untitled Electronic</summary>
+                        <p class="song-title">Untitled</p>
+                        <audio controls src="songs/Dance.wav"></audio>
+                        <p class="project-desc">
+                            An upbeat electronic track I created to practice mixing and propper panning with instruments. Also a sneaky bit of keyboard thrown in there because you can never go wrong with that.
+                            I actually really enjoyed how it turned out, despite being relatively basic.
+                            Oh also it's unnamed, so name it whatever you think fits I guess.
+                        </p>
+                    </details>
+                </li>
+                <li id="night-walking" class="project-element">
+                    <details>
+                        <summary>Mystery Track</summary>
+                        <p class="song-title">Detective</p>
+                        <audio controls src="songs/Detective.mp3"></audio>
+                        <p class="project-desc">
+                            A very L.A. Noire inspired piano swing piece. Probably one of the most complicated lead melody parts I've composed to this date.
+                            I feel like it's a little bumpy at some points, but my excuse is Jazz: the genre where mistakes and unintentional rhythms are APART of the composition!
+                        </p>
+                    </details>
+                </li>
+            </ul>
         </section>
 
         <footer>
