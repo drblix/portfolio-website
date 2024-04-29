@@ -62,6 +62,10 @@ details .fade-in {
     animation: fadeIn 750ms ease-out;
 }
 
+embed {
+    margin: 0 auto;
+}
+
 .loaded {
     opacity: 1;
 }
