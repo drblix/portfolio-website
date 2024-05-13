@@ -62,10 +62,6 @@ details .fade-in {
     animation: fadeIn 750ms ease-out;
 }
 
-details p, audio {
-    margin-left: 1.5em;
-}
-
 embed {
     margin: 0 auto;
 }
