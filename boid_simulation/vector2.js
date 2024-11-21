@@ -39,6 +39,17 @@ export class Vector2 {
     divideS(scalar) {
         return new Vector2(this.x / scalar, this.y / scalar);
     }
+    setMagnitude(scalar) {
+        const newVector = this.normalized().multiplyS(scalar);
+        this.x = newVector.x;
+        this.y = newVector.y;
+    }
+    limitMagnitude(scalar) {
+        const magnitude = this.magnitude();
+        if (magnitude > scalar) {
+            this.setMagnitude(scalar);
+        }
+    }
     /**
      * Calculates the length of this vector
      */

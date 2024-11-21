@@ -8,3 +8,30 @@
     width: 100%;
     position: fixed;
 }
+
+.flex {
+    display: flex;
+}
+
+.main-container {
+    max-width: 75rem;
+    margin: 0 auto;
+}
+
+.portfolio-menu {
+    flex-basis: 25rem;
+}
+
+.portfolio-filler {
+    flex-basis: 25rem;
+}
+
+.page-content {
+    text-align: justify;
+    min-width: 20rem;
+}
+
+ul {
+    padding: 0;
+    list-style: none;
+}

@@ -52,6 +52,21 @@ export class Vector2 {
         return new Vector2(this.x / scalar, this.y / scalar);
     }
 
+    public setMagnitude(scalar: number): void {
+        const newVector = this.normalized().multiplyS(scalar);
+
+        this.x = newVector.x;
+        this.y = newVector.y;
+    }
+
+    public limitMagnitude(scalar: number): void {
+        const magnitude: number = this.magnitude();
+
+        if (magnitude > scalar) {
+            this.setMagnitude(scalar);
+        }
+    }
+
     /**
      * Calculates the length of this vector
      */
