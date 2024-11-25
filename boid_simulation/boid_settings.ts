@@ -11,7 +11,6 @@ export class BoidSettings {
     constructor(
         visibleRadius: number = 60.0, 
         protectedRadius: number = 20.0, 
-        mouseAvoidRadius: number = 160.0, 
         avoidRepulsionStrength: number = 0.275, 
         separateCoefficient: number = 1.0,
         alignCoefficient: number = 0.5,
@@ -19,7 +18,6 @@ export class BoidSettings {
     ) {
         this.visibleRadius = visibleRadius;
         this.protectedRadius = protectedRadius;
-        this.mouseAvoidRadius = mouseAvoidRadius;
         this.avoidRepulsionStrength = avoidRepulsionStrength;
         this.separateCoefficent = separateCoefficient;
         this.alignCoefficient = alignCoefficient;

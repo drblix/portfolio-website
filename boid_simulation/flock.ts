@@ -1,5 +1,5 @@
-import { Boid } from "./boid";
-import { Vector2 } from "./vector2";
+import { Boid } from "./boid.js";
+import { Obstacle } from "./obstacle.js";
 
 export class Flock {
     private readonly maxSpeed: number = 0.0;
@@ -11,6 +11,7 @@ export class Flock {
     private readonly fillStyle: string | CanvasGradient | CanvasPattern = "white";
 
     private boids: Boid[] = [];
+    private obstacles: Obstacle[] = [];
 
     constructor(
         maxSpeed: number = 3.0,
@@ -33,9 +34,15 @@ export class Flock {
         this.boids.push(boid);
     }
 
-    public removeBoid(): void {
-        if (this.boids.length > 0) {
-            this.boids.pop();
+    public removeBoid(boid: Boid | null = null): void {
+        if (boid) {
+            let index: number = this.boids.indexOf(boid);
+            if (index != -1) {
+                this.obstacles.splice(index, 1);
+            }
+        }
+        else {
+            this.obstacles.pop();
         }
     }
 
@@ -45,9 +52,25 @@ export class Flock {
         }
     }
 
-    public update(canvasWidth: number, canvasHeight: number, mousePosition: Vector2): void {
+    public addObstacle(obstacle: Obstacle): void {
+        this.obstacles.push(obstacle);
+    }
+
+    public removeObstacle(obstacle: Obstacle | null = null): void {
+        if (obstacle) {
+            let index: number = this.obstacles.indexOf(obstacle);
+            if (index != -1) {
+                this.obstacles.splice(index, 1);
+            }
+        }
+        else {
+            this.obstacles.pop();
+        }
+    }
+
+    public update(canvasWidth: number, canvasHeight: number): void {
         for (const boid of this.boids) {
-            boid.update(this.boids, this.maxSpeed, this.maxForce, canvasWidth, canvasHeight, mousePosition);
+            boid.update(this.boids, this.obstacles, this.maxSpeed, this.maxForce, canvasWidth, canvasHeight);
         }
     }
 

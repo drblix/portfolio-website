@@ -1,5 +1,6 @@
 import { BoidSettings } from "./boid_settings.js";
 import { Flock } from "./flock.js";
+import { Obstacle } from "./obstacle.js";
 import { Vector2 } from "./vector2.js";
 
 export class Boid {
@@ -10,8 +11,7 @@ export class Boid {
     private visibleRadius: number = 0.0;
     private protectedRadius: number = 0.0;
     
-    private mouseAvoidRadius: number = 0.0;
-    private mouseAvoidCoefficient: number = 0.0;
+    private avoidCoefficient: number = 0.0;
 
     private separateCoefficent: number = 0.0;
     private alignCoefficient: number = 0.0;
@@ -26,13 +26,22 @@ export class Boid {
         this.applySettings(settings);
     }
 
-    private avoidMouse(mousePosition: Vector2): void {
-        const distance: number = this.position.distanceTo(mousePosition);
-        if (distance < this.mouseAvoidRadius) {
-            let repulsion: Vector2 = this.position.subtract(mousePosition).normalized();
-            repulsion = repulsion.multiplyS((this.mouseAvoidCoefficient * (this.mouseAvoidRadius - distance)) / this.mouseAvoidRadius);
+    private avoidObstacles(obstacles: Obstacle[]): void {
+        const viewDistance: number = 120.0;
+        const futurePosition: Vector2 = this.position.add(this.velocity.normalized().multiplyS(viewDistance));
 
-            this.acceleration = this.acceleration.add(repulsion);
+        for (const obstacle of obstacles) {
+            const obstaclePosition: Vector2 = obstacle.getPosition();
+            const obstacleRadius: number = obstacle.getRadius();
+
+            const distanceToObstacle: number = futurePosition.distanceTo(obstaclePosition);
+            if (distanceToObstacle < obstacleRadius) {
+                const avoidDirection: Vector2 = futurePosition.subtract(obstaclePosition).normalized();
+                const avoidStrength: number = (obstacleRadius - distanceToObstacle) / obstacleRadius;
+                const avoidanceForce: Vector2 = avoidDirection.multiplyS(avoidStrength * this.avoidCoefficient);
+
+                this.acceleration = this.acceleration.add(avoidanceForce);
+            }
         }
     }
 
@@ -151,21 +160,21 @@ export class Boid {
     public applySettings(settings: BoidSettings): void {
         this.visibleRadius = settings.getVisibleRadius();
         this.protectedRadius = settings.getProtectedRadius();
-        this.mouseAvoidRadius = settings.getMouseAvoidRadius();
-        this.mouseAvoidCoefficient = settings.getAvoidRepulsionStrength();
+        this.avoidCoefficient = settings.getAvoidRepulsionStrength();
 
         this.separateCoefficent = settings.getSeparateCoefficient();
         this.alignCoefficient = settings.getAlignCoefficient();
         this.cohereCoefficient = settings.getCohereCoefficient();
     }
 
-    public update(flock: Boid[], maxSpeed: number, maxForce: number, canvasWidth: number, canvasHeight: number, mousePosition: Vector2): void {
+    public update(flock: Boid[], obstacles: Obstacle[], maxSpeed: number, maxForce: number, canvasWidth: number, canvasHeight: number): void {
         this.acceleration = Vector2.Zero;
 
         this.align(maxSpeed, maxForce, flock);
         this.separate(maxSpeed, maxForce, flock);
         this.cohere(maxSpeed, maxForce, flock);
-        this.avoidMouse(mousePosition);
+        this.avoidObstacles(obstacles);
+        //this.avoidMouse(mousePosition);
         
         this.wrapAroundCanvas(canvasWidth, canvasHeight);
 

@@ -7,6 +7,7 @@ export class Flock {
         this.strokeStyle = "black";
         this.fillStyle = "white";
         this.boids = [];
+        this.obstacles = [];
         this.maxSpeed = maxSpeed;
         this.maxForce = maxForce;
         this.boidSize = boidSize;
@@ -17,9 +18,15 @@ export class Flock {
     addBoid(boid) {
         this.boids.push(boid);
     }
-    removeBoid() {
-        if (this.boids.length > 0) {
-            this.boids.pop();
+    removeBoid(boid = null) {
+        if (boid) {
+            let index = this.boids.indexOf(boid);
+            if (index != -1) {
+                this.obstacles.splice(index, 1);
+            }
+        }
+        else {
+            this.obstacles.pop();
         }
     }
     clearBoids() {
@@ -27,9 +34,23 @@ export class Flock {
             continue;
         }
     }
-    update(canvasWidth, canvasHeight, mousePosition) {
+    addObstacle(obstacle) {
+        this.obstacles.push(obstacle);
+    }
+    removeObstacle(obstacle = null) {
+        if (obstacle) {
+            let index = this.obstacles.indexOf(obstacle);
+            if (index != -1) {
+                this.obstacles.splice(index, 1);
+            }
+        }
+        else {
+            this.obstacles.pop();
+        }
+    }
+    update(canvasWidth, canvasHeight) {
         for (const boid of this.boids) {
-            boid.update(this.boids, this.maxSpeed, this.maxForce, canvasWidth, canvasHeight, mousePosition);
+            boid.update(this.boids, this.obstacles, this.maxSpeed, this.maxForce, canvasWidth, canvasHeight);
         }
     }
     render(canvasCtx) {

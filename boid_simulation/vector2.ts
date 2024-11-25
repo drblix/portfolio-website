@@ -82,6 +82,13 @@ export class Vector2 {
     }
 
     /**
+     * Returns the dot product between this vector and another vector
+     */
+    public dot(other: Vector2): number {
+        return (this.x * other.x) + (this.y * other.y);
+    }
+    
+    /**
      * Returns this vector so that the direction is preserved, but the magnitude is equal to 1.0
      */
     public normalized(): Vector2 {

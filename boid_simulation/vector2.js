@@ -63,6 +63,12 @@ export class Vector2 {
         return other.subtract(this).magnitude();
     }
     /**
+     * Returns the dot product between this vector and another vector
+     */
+    dot(other) {
+        return (this.x * other.x) + (this.y * other.y);
+    }
+    /**
      * Returns this vector so that the direction is preserved, but the magnitude is equal to 1.0
      */
     normalized() {
