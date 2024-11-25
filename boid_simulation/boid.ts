@@ -174,7 +174,6 @@ export class Boid {
         this.separate(maxSpeed, maxForce, flock);
         this.cohere(maxSpeed, maxForce, flock);
         this.avoidObstacles(obstacles);
-        //this.avoidMouse(mousePosition);
         
         this.wrapAroundCanvas(canvasWidth, canvasHeight);
 
@@ -185,10 +184,10 @@ export class Boid {
 
     public render(flock: Flock, canvasCtx: CanvasRenderingContext2D): void {
         let directionVector: Vector2 = this.velocity.normalized().multiplyS(flock.getBoidSize());
-		let invVector1: Vector2 = new Vector2(-directionVector.y, directionVector.x);
-		let invVector2: Vector2 = new Vector2(directionVector.y, -directionVector.x);
-		invVector1 = invVector1.divideS(flock.getBoidSize() / 3.0);
-		invVector2 = invVector2.divideS(flock.getBoidSize() / 3.0);
+        let invVector1: Vector2 = new Vector2(-directionVector.y, directionVector.x);
+        let invVector2: Vector2 = new Vector2(directionVector.y, -directionVector.x);
+        invVector1 = invVector1.divideS(flock.getBoidSize() / 3.0);
+        invVector2 = invVector2.divideS(flock.getBoidSize() / 3.0);
 
         canvasCtx.beginPath();
 
@@ -196,13 +195,13 @@ export class Boid {
 
         canvasCtx.lineTo(this.position.x + invVector1.x, this.position.y + invVector1.y);
         canvasCtx.lineTo(this.position.x + directionVector.x, this.position.y + directionVector.y);
-		canvasCtx.lineTo(this.position.x + invVector2.x, this.position.y + invVector2.y);
+        canvasCtx.lineTo(this.position.x + invVector2.x, this.position.y + invVector2.y);
 
-		canvasCtx.lineTo(this.position.x, this.position.y);
+        canvasCtx.lineTo(this.position.x, this.position.y);
 
         canvasCtx.lineWidth = flock.getBoidLineWidth();
         canvasCtx.fillStyle = flock.getStrokeStyle();
-		canvasCtx.stroke();
+        canvasCtx.stroke();
 
         canvasCtx.fillStyle = flock.getFillStyle();
         canvasCtx.fill();

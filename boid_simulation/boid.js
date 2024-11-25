@@ -130,7 +130,6 @@ export class Boid {
         this.separate(maxSpeed, maxForce, flock);
         this.cohere(maxSpeed, maxForce, flock);
         this.avoidObstacles(obstacles);
-        //this.avoidMouse(mousePosition);
         this.wrapAroundCanvas(canvasWidth, canvasHeight);
         this.position = this.position.add(this.velocity);
         this.velocity = this.velocity.add(this.acceleration);
