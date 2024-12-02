@@ -6,7 +6,8 @@
     margin: 0;
     padding: 0;
     width: 100%;
-    position: fixed;
+    position: absolute;
+    z-index: -1;
 }
 
 .flex {
@@ -14,16 +15,16 @@
 }
 
 .main-container {
-    max-width: 75rem;
+    max-width: 80rem;
     margin: 0 auto;
 }
 
 .portfolio-menu {
-    flex-basis: 25rem;
+    flex-basis: 35rem;
 }
 
 .portfolio-filler {
-    flex-basis: 25rem;
+    flex-basis: 50rem;
 }
 
 .page-content {
@@ -39,7 +40,7 @@ ul {
 body {
     font-family: 'Montserrat';
     font-size: 16px;
-    line-height: 1.35;
+    line-height: 1.43;
 }
 
 nav > ul {
@@ -49,4 +50,12 @@ nav > ul {
 a {
     color: inherit;
     text-decoration: none;
+
+    transition-property: letter-spacing;
+    transition-duration: 250ms;
+}
+
+a:hover {
+    text-decoration: underline;
+    letter-spacing: .08rem;
 }

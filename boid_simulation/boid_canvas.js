@@ -7,13 +7,13 @@ const canvas = document.getElementById("boids-canvas");
 const canvasCtx = canvas.getContext("2d");
 let mousePosition = Vector2.Zero;
 const flock = new Flock(5.0, 0.075);
-const defaultBoidSettings = new BoidSettings(60.0, 20.0, 0.175, 0.8, 0.25, 0.25);
+const defaultBoidSettings = new BoidSettings(60.0, 20.0, 0.4, 0.8, 0.4, 0.45);
 for (let i = 0; i < 225; i++) {
     flock.addBoid(new Boid(canvas.width * Math.random(), canvas.height * Math.random(), defaultBoidSettings));
 }
-const mouseObstacle = new Obstacle(mousePosition, 225.0);
+const mouseObstacle = new Obstacle(mousePosition, 160.0);
 flock.addObstacle(mouseObstacle);
-canvas.addEventListener("mousemove", (event) => {
+document.addEventListener("mousemove", (event) => {
     const rect = canvas.getBoundingClientRect();
     mousePosition = new Vector2(event.clientX - rect.left, event.clientY - rect.top);
     mouseObstacle.setPosition(mousePosition);
