@@ -182,12 +182,12 @@ export class Boid {
         this.velocity.limitMagnitude(maxSpeed);
     }
 
-    public render(flock: Flock, canvasCtx: CanvasRenderingContext2D): void {
-        let directionVector: Vector2 = this.velocity.normalized().multiplyS(flock.getBoidSize());
+    public render(flock: Flock, canvasCtx: CanvasRenderingContext2D, scaleFactor: number): void {
+        let directionVector: Vector2 = this.velocity.normalized().multiplyS(flock.getBoidSize() * scaleFactor);
         let invVector1: Vector2 = new Vector2(-directionVector.y, directionVector.x);
         let invVector2: Vector2 = new Vector2(directionVector.y, -directionVector.x);
-        invVector1 = invVector1.divideS(flock.getBoidSize() / 3.0);
-        invVector2 = invVector2.divideS(flock.getBoidSize() / 3.0);
+        invVector1 = invVector1.divideS((flock.getBoidSize()) / (3.0));
+        invVector2 = invVector2.divideS((flock.getBoidSize()) / (3.0));
 
         canvasCtx.beginPath();
 
@@ -199,7 +199,7 @@ export class Boid {
 
         canvasCtx.lineTo(this.position.x, this.position.y);
 
-        canvasCtx.lineWidth = flock.getBoidLineWidth();
+        canvasCtx.lineWidth = flock.getBoidLineWidth() * scaleFactor;
         canvasCtx.fillStyle = flock.getStrokeStyle();
         canvasCtx.stroke();
 

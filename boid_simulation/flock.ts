@@ -1,14 +1,23 @@
 import { Boid } from "./boid.js";
 import { Obstacle } from "./obstacle.js";
 
+enum Theme {
+    Light,
+    Dark
+}
+
 export class Flock {
+
     private readonly maxSpeed: number = 0.0;
     private readonly maxForce: number = 0.0;
 
     private readonly boidSize: number = 13.5;
     private readonly boidLineWidth: number = 4.0;
-    private readonly strokeStyle: string | CanvasGradient | CanvasPattern = "black";
-    private readonly fillStyle: string | CanvasGradient | CanvasPattern = "white";
+    
+    private strokeStyle: string | CanvasGradient | CanvasPattern = "black";
+    private fillStyle: string | CanvasGradient | CanvasPattern = "white";
+
+    private scaleFactor: number = 1.0;
 
     private boids: Boid[] = [];
     private obstacles: Obstacle[] = [];
@@ -76,7 +85,26 @@ export class Flock {
 
     public render(canvasCtx: CanvasRenderingContext2D): void {
         for (const boid of this.boids) {
-            boid.render(this, canvasCtx);
+            boid.render(this, canvasCtx, this.scaleFactor);
+        }
+    }
+
+    public updateScaleFactor(canvasWidth: number, canvasHeight: number): void {
+        const BASE_SIZE: number = 1536.0 * 842.0;
+
+        const size: number = canvasWidth * canvasHeight;
+
+        this.scaleFactor = size / BASE_SIZE;
+    }
+
+    public setTheme(theme: Theme): void {
+        if (theme == Theme.Light) {
+            this.strokeStyle = "black";
+            this.fillStyle = "white";
+        }
+        else {
+            this.strokeStyle = "white";
+            this.fillStyle = "black";
         }
     }
 
