@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="./main.css">
+        <title>Benjamin N | hobbies</title>
+
+        <!-- favicon stuff -->
+        <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png">
+        <link rel="manifest" href="./site.webmanifest">
+
+        <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+    </head>
+    
+    <body>
+        <main class="main-container flex">
+            <aside class="portfolio-menu">
+                <nav>
+                    <h3><a href="./index.html">about me</a></h3>
+                    <ul>
+                        <li><a href="./projects.html">projects</a></li>
+                        <li><u>hobbies</u></li>
+                    </ul>
+                </nav>
+            </aside>
+            <div class="portfolio-page">
+                <header class="page-header">
+                    <h1>Hobbies</h1>
+                </header>
+                <div class="page-content">
+                    <p>Below are a couple of my most favoured hobbies; I can't list them all, obviously, but I picked some of the biggest ones that I would like to share.</p>
+                    <p>A lot of these hobbies have visual/audio accompaniment, so I hope you can appreciate the passion I have for these things!</p>
+                    <div class="hobby-section">
+                        <h3>🎶 Music Composition 🎶</h3>
+                        <p>Just to put these projects into context, my father is a professional musician, so I have been exposed to music since a very young age. I have took piano lessons around the age of 4 until I was about 15 (11 years, I surprise even myself), so I have a decent amount of formal training, but never took any classes in school that focused solely on music or music theory.</p>
+                        <p>My father, as well as some of the piano instructors I've had, believe me to have "perfect pitch". If you don't know what that means, we'll go by what the internet puts it as, that is, "the ability to identify or produce a musical note without a reference point". I don't necessarily agree, nor do I really care either way, I've just always liked composing musical pieces. Specifically, I've always liked to dabble in electronic dance music genres, due to the ease of access for creating those kinds of pieces.</p>
+                        <p>I've been composing music since I was around 10 years old, and believe me, I've made some terrible tracks, but I like to believe I've significantly improved in my melody creation and mixing technique. Enjoy some of the tracks I'm showcasing below!</p>
+                        <details class="project-details">
+                            <summary>Drum n' Bass EDM</summary>
+                            <div class="project-contents">
+                                <p class="no-t-margin">This was a bit of an adventurous music project I made in junior year of high school, specifically for the homecoming dance that was to be happening that year (I was one of the organizers).</p>
+                                <p>I really tried to focus on the mixing aspect (blending of sounds, etc) for this track, while simultaneously emphasizing the bass and drum tracks, aligning the song with the aforementioned genre. I also snuck a small guitar solo around the middle of the song which I finally got right after about 50 takes.</p>
+                                <p class="no-b-margin">The song was a pretty big hit at homecoming, which made me very happy. I managed to complete the song in less than a month. Fun fact: the occasional vocal interjections you hear are clips from a game called "Command and Conquer", one of my favourite games of all time.</p>
+                                <div class="file-preview">
+                                    <div class="file-details">
+                                        <h4>DnB Track (3:36)</h4>
+                                        <a href="./enc2135_materials/music/dnb.mp3" target="_blank">Open MP3<img src="./new-tab.webp" width="24" height="24"></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </details>
+                        <details class="project-details">
+                            <summary>Saxophone and EDM?</summary>
+                            <div class="project-contents">
+                                <p class="no-t-margin">The creation of this track actually has kind of an interesting story: to keep it short, my father is a jazz musician, and after attending one of his concerts, he introduced me to the lead saxophone player who was on stage with him.</p>
+                                <p>The conversation basically boiled down to my music composition hobby, where the saxophone player offered a very curious question: "How would a saxophone would sound in EDM music?". And voilà—the track I was destined to create was heavily inspired by the saxophone taking part as the lead melody instead of a synth.</p>
+                                <p class="no-b-margin">In the making of this track, I managed to find a pretty decent saxophone mixer for the digital audio workstation (DAW) that I use: adding some neat filters over it gave an awesome sound, creating the track below! Definitely enjoy, this one took about 1-2 months with some very fine polishing.</p>
+                                <div class="file-preview">
+                                    <div class="file-details">
+                                        <h4>Saxophone EDM Track (3:24)</h4>
+                                        <a href="./enc2135_materials/music/sax-edm.mp3" target="_blank">Open MP3<img src="./new-tab.webp" width="24" height="24"></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </details>
+                    </div>
+                </div>
+            </div>
+            <aside class="portfolio-filler"></aside>
+        </main>
+    </body>
+
+    <canvas id="boids-canvas" width="1920" height="960"></canvas>
+    <script type="module" src="./boid_simulation/boid_canvas.js"></script>
+</html>

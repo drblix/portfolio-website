@@ -27,7 +27,7 @@ export class Boid {
     }
 
     private avoidObstacles(obstacles: Obstacle[]): void {
-        const viewDistance: number = 120.0;
+        const viewDistance: number = 180.0;
         const futurePosition: Vector2 = this.position.add(this.velocity.normalized().multiplyS(viewDistance));
 
         for (const obstacle of obstacles) {
@@ -35,9 +35,18 @@ export class Boid {
             const obstacleRadius: number = obstacle.getRadius();
 
             const distanceToObstacle: number = futurePosition.distanceTo(obstaclePosition);
+            const distanceToObstacle2: number = this.position.distanceTo(obstaclePosition);
+            
             if (distanceToObstacle < obstacleRadius) {
                 const avoidDirection: Vector2 = futurePosition.subtract(obstaclePosition).normalized();
                 const avoidStrength: number = (obstacleRadius - distanceToObstacle) / obstacleRadius;
+                const avoidanceForce: Vector2 = avoidDirection.multiplyS(avoidStrength * this.avoidCoefficient);
+
+                this.acceleration = this.acceleration.add(avoidanceForce);
+            }
+            else if (distanceToObstacle2 < obstacleRadius) {
+                const avoidDirection: Vector2 = this.position.subtract(obstaclePosition).normalized();
+                const avoidStrength: number = (obstacleRadius - distanceToObstacle2) / obstacleRadius;
                 const avoidanceForce: Vector2 = avoidDirection.multiplyS(avoidStrength * this.avoidCoefficient);
 
                 this.acceleration = this.acceleration.add(avoidanceForce);

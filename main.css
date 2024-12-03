@@ -7,7 +7,7 @@
     padding: 0;
     width: 100%;
     position: absolute;
-    z-index: -1;
+    pointer-events: none;
 }
 
 .flex {
@@ -20,17 +20,115 @@
 }
 
 .portfolio-menu {
-    flex-basis: 35rem;
+    flex-basis: 55rem;
 }
 
 .portfolio-filler {
-    flex-basis: 50rem;
+    flex-basis: 55rem;
 }
 
 .page-content {
     text-align: justify;
     min-width: 20rem;
 }
+
+.page-header {
+    text-align: center;
+}
+
+.project-details summary {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.project-details summary::marker {
+    content: none;
+}
+
+.project-details summary::before {
+    content: '＋';
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.project-details[open] summary::before {
+    content: '−';
+    transform: rotate(180deg);
+}
+
+.file-preview {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-top: 15px;
+    background-color: #f4f4f4;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.file-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    background-color: #7000cc;
+    color: white;
+    border-radius: 10px;
+    font-weight: bold;
+}
+
+.file-details a img {
+    vertical-align: sub;
+    padding-left: 7px;
+}
+
+.file-details {
+    flex-grow: 1;
+}
+
+.file-details p {
+    margin: 5px 0;
+    font-size: 0.7em;
+}
+
+.file-details h4 {
+    margin-top: .45em;
+    margin-bottom: .45em;
+}
+
+.file-preview a {
+    display: inline-block;
+    background-color: #7000cc;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 13px;
+    text-decoration: none;
+
+    transition: background-color, box-shadow 250ms;
+}
+
+.file-preview a:hover {
+    background-color: #5a00a3;
+    box-shadow: 0 0 10px rgba(112, 0, 204, 0.5);
+    text-decoration: none;
+    letter-spacing: normal;
+}
+
+.hobby-section p {
+    font-size: 0.875em;
+}
+
+div.hobby-section {
+    border: 4px solid #c9c9c9;
+    border-radius: 20px;
+}
+
+div.hobby-section * {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
 
 ul {
     padding: 0;
@@ -39,7 +137,7 @@ ul {
 
 body {
     font-family: 'Montserrat';
-    font-size: 16px;
+    font-size: 1.35em;
     line-height: 1.43;
 }
 
@@ -58,4 +156,46 @@ a {
 a:hover {
     text-decoration: underline;
     letter-spacing: .08rem;
+}
+
+details {
+    background-color: white;
+    border: 2px solid #ddd;
+    border-radius: 15px;
+    margin-bottom: 40px;
+    padding: 7px;
+
+    transition: border-color, box-shadow 250ms;
+}
+
+details summary {
+    cursor: pointer;
+    font-weight: bold;
+    color: #333;
+    transition: color 0.3s ease;
+}
+
+details summary:hover {
+    color: #7000cc;
+}
+
+details[open] {
+    border-color: #7000cc;
+    box-shadow: 0 0 20px rgba(112, 0, 204, 0.5);
+}
+
+details .project-contents p {
+    font-size: 0.8em;
+}
+
+details p.no-t-margin {
+    margin-top: 0;
+}
+
+details p.no-b-margin {
+    margin-bottom: 0;
+}
+
+details div.project-contents {
+    padding: 0.5em;
 }

@@ -16,15 +16,22 @@ export class Boid {
         this.applySettings(settings);
     }
     avoidObstacles(obstacles) {
-        const viewDistance = 120.0;
+        const viewDistance = 180.0;
         const futurePosition = this.position.add(this.velocity.normalized().multiplyS(viewDistance));
         for (const obstacle of obstacles) {
             const obstaclePosition = obstacle.getPosition();
             const obstacleRadius = obstacle.getRadius();
             const distanceToObstacle = futurePosition.distanceTo(obstaclePosition);
+            const distanceToObstacle2 = this.position.distanceTo(obstaclePosition);
             if (distanceToObstacle < obstacleRadius) {
                 const avoidDirection = futurePosition.subtract(obstaclePosition).normalized();
                 const avoidStrength = (obstacleRadius - distanceToObstacle) / obstacleRadius;
+                const avoidanceForce = avoidDirection.multiplyS(avoidStrength * this.avoidCoefficient);
+                this.acceleration = this.acceleration.add(avoidanceForce);
+            }
+            else if (distanceToObstacle2 < obstacleRadius) {
+                const avoidDirection = this.position.subtract(obstaclePosition).normalized();
+                const avoidStrength = (obstacleRadius - distanceToObstacle2) / obstacleRadius;
                 const avoidanceForce = avoidDirection.multiplyS(avoidStrength * this.avoidCoefficient);
                 this.acceleration = this.acceleration.add(avoidanceForce);
             }
