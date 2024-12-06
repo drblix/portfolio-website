@@ -176,19 +176,23 @@ export class Boid {
         this.cohereCoefficient = settings.getCohereCoefficient();
     }
 
-    public update(flock: Boid[], obstacles: Obstacle[], maxSpeed: number, maxForce: number, canvasWidth: number, canvasHeight: number): void {
+    public update(deltaTime: number, flock: Boid[], obstacles: Obstacle[], maxSpeed: number, maxForce: number, canvasWidth: number, canvasHeight: number): void {
+        // normalizing these speeds to 60 FPS
+        const adjustedMaxSpeed: number = maxSpeed * deltaTime * 60.0;
+        const adjustedMaxForce: number = maxForce * deltaTime * 60.0;
+        
         this.acceleration = Vector2.Zero;
 
-        this.align(maxSpeed, maxForce, flock);
-        this.separate(maxSpeed, maxForce, flock);
-        this.cohere(maxSpeed, maxForce, flock);
+        this.align(adjustedMaxSpeed, adjustedMaxForce, flock);
+        this.separate(adjustedMaxSpeed, adjustedMaxForce, flock);
+        this.cohere(adjustedMaxSpeed, adjustedMaxForce, flock);
         this.avoidObstacles(obstacles);
         
         this.wrapAroundCanvas(canvasWidth, canvasHeight);
 
-        this.position = this.position.add(this.velocity);
-        this.velocity = this.velocity.add(this.acceleration)
-        this.velocity.limitMagnitude(maxSpeed);
+        this.position = this.position.add(this.velocity.multiplyS(deltaTime * 60.0));
+        this.velocity = this.velocity.add(this.acceleration.multiplyS(deltaTime * 60.0))
+        this.velocity.limitMagnitude(adjustedMaxSpeed);
     }
 
     public render(flock: Flock, canvasCtx: CanvasRenderingContext2D, scaleFactor: number): void {

@@ -4,6 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="./main.css">
+        <link rel="stylesheet" href="./gallery.css">
         <title>Benjamin N | hobbies</title>
 
         <!-- favicon stuff -->
@@ -23,6 +24,7 @@
                     <ul>
                         <li><a href="./projects.html">projects</a></li>
                         <li><u>hobbies</u></li>
+                        <li><a href="./reflection.html">reflection</a></li>
                     </ul>
                 </nav>
             </aside>
@@ -67,6 +69,26 @@
                             </div>
                         </details>
                     </div>
+                    <div class="hobby-section">
+                        <h3>🎮 Game Development 🎮</h3>
+                        <p>Video games, while a lot of fun, are actually one of the things that really got me interested in computers. A lot of the games I've played implement a ton of interesting algorithms to accomplish their goal: one example I love is the Civilization franchise.</p>
+                        <p>This interest in videos games inevitably led to my adventures in game development. I've created a lot of games, many of which being pure experiments or actual, playable video games that I've finished.</p>
+                        <p> Unfortunately, the computer where I have most of my game projects stored I don't have access to at the moment, so enjoy the one that I do have access to below!</p>
+                        <details class="project-details">
+                            <summary>Galatigoo</summary>
+                            <div class="project-contents">
+                                <p class="no-t-margin">This is actually one of the ambitious projects I've taken on yet. For context, the game is based around the genre of "real time strategies", games that have a strategic element, usually building units to attack enemies, but happen over the course of real time instead of turns.</p>
+                                <p>The game is based on the idea of, instead of fighting discrete enemies that some AI opponent throws at you, you instead fight an ever-present liquid threat called "goo" (creative, I know).</p>
+                                <p>Your goal is to construct towers that, instead of destroying the goo (in a sense), hold it back. Think of it like building a dam, but instead of lots of concrete, it's a lot of laser guns and the like. Take a peek below!</p>
+                                
+                                <div id="galatigoo-gallery" class="gallery-grid">
+                                </div>
+                                <div id="galatigoo-modal" class="modal hidden">
+                                    <span class="close">&times;</span>
+                                    <img class="modal-content" src="">
+                                </div>
+                        </details>
+                    </div>
                 </div>
             </div>
             <aside class="portfolio-filler"></aside>
@@ -75,4 +97,5 @@
 
     <canvas id="boids-canvas" width="1920" height="960"></canvas>
     <script type="module" src="./boid_simulation/boid_canvas.js"></script>
+    <script type="module" src="./gallery.js"></script>
 </html>

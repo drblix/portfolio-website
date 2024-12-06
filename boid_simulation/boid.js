@@ -131,16 +131,19 @@ export class Boid {
         this.alignCoefficient = settings.getAlignCoefficient();
         this.cohereCoefficient = settings.getCohereCoefficient();
     }
-    update(flock, obstacles, maxSpeed, maxForce, canvasWidth, canvasHeight) {
+    update(deltaTime, flock, obstacles, maxSpeed, maxForce, canvasWidth, canvasHeight) {
+        // normalizing these speeds to 60 FPS
+        const adjustedMaxSpeed = maxSpeed * deltaTime * 60.0;
+        const adjustedMaxForce = maxForce * deltaTime * 60.0;
         this.acceleration = Vector2.Zero;
-        this.align(maxSpeed, maxForce, flock);
-        this.separate(maxSpeed, maxForce, flock);
-        this.cohere(maxSpeed, maxForce, flock);
+        this.align(adjustedMaxSpeed, adjustedMaxForce, flock);
+        this.separate(adjustedMaxSpeed, adjustedMaxForce, flock);
+        this.cohere(adjustedMaxSpeed, adjustedMaxForce, flock);
         this.avoidObstacles(obstacles);
         this.wrapAroundCanvas(canvasWidth, canvasHeight);
-        this.position = this.position.add(this.velocity);
-        this.velocity = this.velocity.add(this.acceleration);
-        this.velocity.limitMagnitude(maxSpeed);
+        this.position = this.position.add(this.velocity.multiplyS(deltaTime * 60.0));
+        this.velocity = this.velocity.add(this.acceleration.multiplyS(deltaTime * 60.0));
+        this.velocity.limitMagnitude(adjustedMaxSpeed);
     }
     render(flock, canvasCtx, scaleFactor) {
         let directionVector = this.velocity.normalized().multiplyS(flock.getBoidSize() * scaleFactor);

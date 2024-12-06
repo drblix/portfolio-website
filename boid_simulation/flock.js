@@ -54,9 +54,9 @@ export class Flock {
             this.obstacles.pop();
         }
     }
-    update(canvasWidth, canvasHeight) {
+    update(canvasWidth, canvasHeight, deltaTime) {
         for (const boid of this.boids) {
-            boid.update(this.boids, this.obstacles, this.maxSpeed, this.maxForce, canvasWidth, canvasHeight);
+            boid.update(deltaTime, this.boids, this.obstacles, this.maxSpeed, this.maxForce, canvasWidth, canvasHeight);
         }
     }
     render(canvasCtx) {
@@ -65,9 +65,10 @@ export class Flock {
         }
     }
     updateScaleFactor(canvasWidth, canvasHeight) {
-        const BASE_SIZE = 1536.0 * 842.0;
-        const size = canvasWidth * canvasHeight;
-        this.scaleFactor = size / BASE_SIZE;
+        const BASE_AREA = 1920 * 1080;
+        const currentArea = canvasWidth * canvasHeight;
+        this.scaleFactor = Math.sqrt(currentArea / BASE_AREA);
+        this.scaleFactor = Math.max(0.5, Math.min(this.scaleFactor, 2.0));
     }
     setTheme(theme) {
         if (theme == Theme.Light) {
